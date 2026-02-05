@@ -51,12 +51,10 @@ def login(request):
 
             if user is not None:
                 auth.login(request, user)
-                return redirect("Home")
+                return redirect("dashboard")
             else:
-                # FIX 2: Add error message if auth fails manually
                 messages.error(request, "Invalid username or password.")
         else:
-            # FIX 3: Add error message if form validation fails
             messages.error(request, "Invalid username or password.")
 
     else:
