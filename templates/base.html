@@ -34,7 +34,7 @@
             <a class="btn btn-sm btn-warning" href="{%url 'login'%}">Login</a> &nbsp;
             <a class="btn btn-sm btn-outline-secondary" href="{%url 'register'%}">Register</a>
             {%else%}
-            <span> <a class="btn btn-sm btn-warning" href="{%url 'dashboard'%}"> Dashboard </a> </span>
+            <span> <a class="btn btn-sm btn-warning" href="{%url 'dashboard'%}"> {{user}} </a> </span>
             &emsp;
             <span> <a class="btn btn-sm btn-warning" href="{%url 'logout'%}"> Logout </a> </span>
             {%endif%}
