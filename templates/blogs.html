@@ -23,7 +23,40 @@
                 <section class="mb-5">
                     <p class="fs-5 mb-4">{{single_blog.short_description}}</p>
                     <p class="fs-5 mb-4">{{single_blog.blog_body}}</p>
-                    </section>
+
+                    <!-- Comments -->
+                    <h4> Comments ({{count}}) </h4>
+                    {%if user.is_authenticated%}
+                    <div class="form-group">
+                        <form action="" method="POST">
+                        {%csrf_token%}
+                            <div class="form-group">
+                                 <textarea name="comment" class="form-control" placeholder="Write your comment"></textarea>
+                                 <input type="submit" value="submit" class="btn btn-primary mt-2">
+                            </div>
+                        </form>
+                    </div>
+                    {%else%}
+                    <p>Please login to write a comment</p>
+                    {%endif%}
+
+                    {%if comments%}
+                        {%for comment in comments%}
+                            <div class="card">
+                                <div class="card-body">
+                                    <p class="card-text mb-0">{{comment}}</p>
+                                    <span>
+                                        <small>By {{comment.user}}</small>
+                                        <small>{{comment.updated_at | timesince}} ago</small>
+                                    </span>
+                                </div>
+                            </div>
+                        {%endfor%}
+                    {%else%}
+                    No comments yet
+                    {%endif%}
+
+                </section>
             </article>
         </div>
         <!-- Side widgets-->
